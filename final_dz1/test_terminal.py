@@ -13,7 +13,7 @@ def setup_fs(tmp_path):
         myzip.writestr('empty_dir/', '')
     return str(fs_path)
 
-# Фикстура для мокирования output_text
+
 @pytest.fixture
 def mock_output_text(monkeypatch):
     mock = MagicMock()
@@ -23,8 +23,10 @@ def mock_output_text(monkeypatch):
 
 # Пример теста команды ls
 def test_ls_root(setup_fs, mock_output_text):
+
     global current_dir, myzip
     current_dir = ''
+
     with ZipFile(setup_fs, 'a') as myzip:
         execute_command('ls')
         # Проверяем, что output_text.insert был вызван хотя бы раз
@@ -47,8 +49,10 @@ def test_cd_to_existing_directory(setup_fs, mock_output_text):
 
 # Пример теста команды cd к несуществующей директории
 def test_cd_to_nonexistent_directory(setup_fs, mock_output_text):
+
     global current_dir, myzip
     current_dir = ''
+
     with ZipFile(setup_fs, 'a') as myzip:
         execute_command('cd nonexistent_dir')
         # Проверяем, что текущее местоположение не изменилось

@@ -16,14 +16,12 @@ def read_config(config_path):
     log_path = root.find('log_path').text
     return computer_name, fs_path, log_path
 
-
 # Функция для записи в лог-файл
 def write_log(log_path, command, output):
     timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     with open(log_path, 'a', newline='') as log_file:
         writer = csv.writer(log_file)
         writer.writerow([timestamp, command, output.strip()])
-
 
 # Функция выполнения команды
 def execute_command(command):
