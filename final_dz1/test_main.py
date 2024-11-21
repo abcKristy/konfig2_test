@@ -6,12 +6,15 @@ from main import execute_command  # Импортируйте вашу функц
 # Фикстура для создания zip-файла с виртуальной файловой системой
 @pytest.fixture
 def setup_fs(tmp_path):
+
     fs_path = tmp_path / "test_fs.zip"
+
     with ZipFile(fs_path, 'w') as myzip:
         myzip.writestr('example_dir/', '')  # Папка example_dir
         myzip.writestr('empty_dir/', '')     # Пустая папка empty_dir
         myzip.writestr('example_dir/hello.txt', 'Hello, world!')  # Файл внутри example_dir
     return str(fs_path)
+
 
 # Фикстура для мокирования output_text
 @pytest.fixture

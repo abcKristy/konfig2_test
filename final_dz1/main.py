@@ -26,13 +26,10 @@ def write_log(log_path, command, output):
 # Функция выполнения команды
 def execute_command(command):
     global current_dir
-
     if command == 'clear':
         output_text.delete('1.0', tk.END)
         return ""
-
     output = ""
-
     if command == 'ls':
         output = ""
         if current_dir:
@@ -42,8 +39,6 @@ def execute_command(command):
                     output += relative_name + "\n"
         else:
             output = "\n".join(myzip.namelist()) + "\n"
-
-
     elif command.startswith('cd '):
         path = command.split(maxsplit=1)[1]
         for part in path.split('/'):
@@ -69,7 +64,6 @@ def execute_command(command):
         # Удаление папки
         path = command.split(maxsplit=1)[1]
         full_path = (current_dir + path).strip('/') + '/'
-
         # Проверяем, существует ли директория
         if full_path not in myzip.namelist():
             output = f"No such directory: {path}\n"
