@@ -25,8 +25,10 @@ def mock_output_text(monkeypatch):
 
 # Тесты для команды ls
 def test_ls_root(setup_fs, mock_output_text):
+
     global current_dir
     current_dir = ''
+
     with ZipFile(setup_fs, 'a') as myzip:
         execute_command('ls')
         # Проверяем, что output_text.insert был вызван
@@ -37,8 +39,10 @@ def test_ls_root(setup_fs, mock_output_text):
         assert 'hello.txt' in output_content
 
 def test_ls_empty_directory(setup_fs, mock_output_text):
+
     global current_dir
     current_dir = ''
+
     with ZipFile(setup_fs, 'a') as myzip:
         execute_command('ls')
         output_content = mock_output_text.insert.call_args[0][1]

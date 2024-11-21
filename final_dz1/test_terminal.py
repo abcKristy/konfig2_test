@@ -44,6 +44,7 @@ def test_cd_to_existing_directory(setup_fs, mock_output_text):
         execute_command('cd example_dir')
         # Проверяем, что текущее местоположение изменилось
         assert current_dir == 'example_dir/'
+
         # Проверяем, что не было сообщений об ошибке при переходе в директорию
         mock_output_text.insert.assert_called_once_with('end', '')
 

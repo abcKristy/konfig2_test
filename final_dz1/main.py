@@ -25,6 +25,7 @@ def write_log(log_path, command, output):
 
 # Функция выполнения команды
 def execute_command(command):
+
     global current_dir
     if command == 'clear':
         output_text.delete('1.0', tk.END)
