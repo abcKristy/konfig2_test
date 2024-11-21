@@ -65,6 +65,7 @@ def execute_command(command):
         # Удаление папки
         path = command.split(maxsplit=1)[1]
         full_path = (current_dir + path).strip('/') + '/'
+
         # Проверяем, существует ли директория
         if full_path not in myzip.namelist():
             output = f"No such directory: {path}\n"
